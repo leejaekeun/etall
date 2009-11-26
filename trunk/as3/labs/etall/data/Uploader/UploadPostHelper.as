@@ -1,4 +1,4 @@
-﻿package {
+﻿package labs.etall.data.Uploader{
 
 	import flash.events.*;
 	import flash.net.*;
