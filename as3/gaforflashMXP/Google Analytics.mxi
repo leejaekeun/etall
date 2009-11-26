@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<macromedia-extension 
+  name="Google Analytics" 
+  version="1.0.1.319" 
+  type="flashcomponent" 
+  requires-restart="true"> 
+ <author name="gaforflash" /> 
+ <products> 
+   <product name="Flash" version="9" primary="true" /> 
+ </products> 
+ <description> 
+ <![CDATA[ 
+Imort the Google Analytics for Flash component
+ ]]> 
+ </description> 
+ <ui-access> 
+ <![CDATA[ 
+ Access the component  by selecting 'Window > Components'.  
+ ]]> 
+ </ui-access> 
+
+ <license-agreement> 
+ <![CDATA[
+	Apache License 2.0
+ ]]> 
+ </license-agreement> 
+ <files> 
+ <file source="analytics_flash.swc" destination="$Flash/Components/Google Analytics" /> 
+ </files> 
+</macromedia-extension>
