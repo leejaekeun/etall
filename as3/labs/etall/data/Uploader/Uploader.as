@@ -1,4 +1,4 @@
-﻿package  
+﻿package  labs.etall.data.Uploader
 {
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
