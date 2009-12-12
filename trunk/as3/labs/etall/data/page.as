@@ -29,7 +29,10 @@ package labs.etall.data {
 	import flash.events.EventDispatcher;
 	import flash.events.Event;
 	public class page extends EventDispatcher {
-		private var _data:XML; //xml data
+		private var _dataXML:XML; //xml data
+		private var _dataArray:Array;
+		
+		private var _isXML:Boolean = true;
 		
 		private var _perPageNum:int=10; //每页显示条数
 		private var _total:int;//总条数
@@ -42,13 +45,24 @@ package labs.etall.data {
 		public var prevEnabled:Boolean;//上一页可点?
 		
 		private var returnData:Array;
-		public function page($xml:XML):void {
-			_data = $xml;
+		public function page($data:*):void {
+			if ($data is XML) {
+				_dataXML = $data;
+			}else {
+				_isXML = false;
+				_dataArray = $data;
+			}
 		}
 		
 		public function init() {
 			prevEnabled = nextEnabled = false;
-			_total = _data.children().length(); //所有条目 trace(_total);
+			
+			if(_isXML){
+				_total = _dataXML.children().length(); //所有条目 trace(_total);
+			}else {
+				_total = _dataArray.length;
+			}
+			
 			_totalPage = Math.ceil(_total / _perPageNum);
 			showPage(_defaultpage);
 		}
@@ -61,8 +75,12 @@ package labs.etall.data {
 			
 			returnData = new Array();
 			
-			for (var i:uint = _currentPage*_perPageNum; i < Math.min(_total, (_currentPage+1) * _perPageNum); i++ ) {
-				returnData.push(_data.children()[i]);
+			for (var i:uint = _currentPage * _perPageNum; i < Math.min(_total, (_currentPage + 1) * _perPageNum); i++ ) {
+				if(_isXML){
+					returnData.push(_dataXML.children()[i]);
+				}else {
+					returnData.push(_dataArray[i]);
+				}
 				//trace(_data.children()[i]);
 			}
 			//trace(returnData);
