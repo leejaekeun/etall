@@ -28,22 +28,25 @@
 	import flash.text.TextField;
 	public class BindingUtil{		
 		
-		//通用绑定数据
+		//通用绑定数据 待整理
 		public static  function BindingText ($data:Object, $obj:Sprite) {
+			var obj:*;
 			if($data is Object){
 				for (var i:String in $data) {
 					//trace(i);
-					if ($obj.getChildByName(i) != null) {
-						($obj.getChildByName(i) as TextField).htmlText = $data[i];
-						($obj.getChildByName(i) as TextField).mouseEnabled = false;
+					obj= $obj.getChildByName(i);
+					if (obj != null) {
+						if(obj is TextField)obj.htmlText = $data[i];
+						obj.mouseEnabled = false;
 					}
 				}
 			}
 			if ($data is XML) {
 				for each(var item:XML in $data.children()) {
-					if ($obj.getChildByName(item.name()) != null) {
-						($obj.getChildByName(item.name()) as TextField).htmlText = item;
-						($obj.getChildByName(item.name()) as TextField).mouseEnabled = false;
+					obj = $obj.getChildByName(item.name());
+					if (obj != null) {
+						if (obj is TextField)obj.htmlText = item;
+						obj.mouseEnabled = false;
 					}
 				}
 			}
