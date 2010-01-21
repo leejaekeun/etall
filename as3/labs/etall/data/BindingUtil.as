@@ -26,9 +26,9 @@
  package labs.etall.data {
 	import flash.display.Sprite;
 	import flash.text.TextField;
-	public BindingUtil{		
+	public class BindingUtil{		
 		
-		//通用绑定数据 待整理
+		//通用绑定数据
 		public static  function BindingText ($data:Object, $obj:Sprite) {
 			if($data is Object){
 				for (var i:String in $data) {
