@@ -324,5 +324,13 @@
 		public static function fileType(url:String):String {
 			return(url.split("\/")[url.split("\/").length - 1].split(".").pop());
 		}
+		public  static function replacePrarm(URI:String, arg:Array = null):String {
+			if(arg!=null){
+				for(var i:String in arg){
+					URI=URI.replace("{"+i+"}",arg[i]);		
+				}
+			}
+			return(URI);
+		}
 	}
 }
