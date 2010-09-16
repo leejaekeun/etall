@@ -324,13 +324,41 @@
 		public static function fileType(url:String):String {
 			return(url.split("\/")[url.split("\/").length - 1].split(".").pop());
 		}
-		public  static function replacePrarm(URI:String, arg:Array = null):String {
+		
+		/**
+		 *  替换数组中有序参数
+		 *  var url:String="http://etall.cn/username={0}&themes={1}"
+		 *  url=ParametersReplace(url,["etall",5]);
+		 * // output:http://etall.cn/username=etall&themes=5
+		 * @param	URI
+		 * @param	arg
+		 * @return
+		 */
+		public  static function replaceParam(URI:String, arg:Array = null):String {
 			if(arg!=null){
 				for(var i:String in arg){
 					URI=URI.replace("{"+i+"}",arg[i]);		
 				}
 			}
 			return(URI);
+		}
+		/**
+		 * 替换标签参数
+		 * 用法：
+		 * 	 var url:String="http://etall.cn/username={username}"
+		 *   url=ParametersReplace(url,{username:'etall'});
+		 *   // output: http://etall.cn/username=etall
+		 * @param	str
+		 * @param	filter
+		 * @return
+		 */
+		
+		public static function ParametersReplace (str:String, filter:Object):String
+		{
+			for (var s:String in filter) {
+				str=str.replace(new RegExp("(\{)"+s+"(\})","g"),filter[s]);
+			}
+			return str;
 		}
 	}
 }
