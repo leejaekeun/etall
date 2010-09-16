@@ -28,7 +28,7 @@
 	import flash.text.TextField;
 	public class BindingUtil{		
 		
-		//通用绑定数据 待整理
+		
 		public static  function BindingText ($data:Object, $obj:Sprite) {
 			var obj:*;
 			if($data is Object){
