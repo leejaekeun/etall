@@ -3,10 +3,10 @@
 	
 	/**
 	 * 
-	 *platform 
-	 *majorVersion 
-	 *buildNumber  
-	 *internalBuildNumber
+	 * platform 
+	 * majorVersion 
+	 * buildNumber  
+	 * internalBuildNumber
 	 * @author etall
 	 */
 	import flash.system.Capabilities;
