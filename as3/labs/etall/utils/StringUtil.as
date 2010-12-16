@@ -360,5 +360,15 @@
 			}
 			return str;
 		}
+		
+		public static function reverse (str:String):String {
+			var reverse:String = '';
+			for (var i:int = str.length-1; i>=0; i--)
+			{
+				reverse = reverse + str.charAt(i);
+			}
+			return(reverse);
+		}
+		
 	}
 }
