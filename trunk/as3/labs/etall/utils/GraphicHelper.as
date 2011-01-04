@@ -61,6 +61,56 @@
 			}
 			return pointList;
 		}
+		/**
+		 * 画一个类似遮罩的框 中间透明 用于截图
+		 * @param	canvas
+		 * @param	thickX
+		 * @param	thickY
+		 * @param	n_color
+		 * @param	n_alpha
+		 * @param	$width
+		 * @param	$height
+		 * @param	startX
+		 * @param	startY
+		 */
+		static public function  drawBorder (canvas:Graphics, thickX:Number = 1, thickY:int = 1 , n_color:uint = 0, n_alpha:Number = .5, $width:int = 520, $height:int = 725, startX:int = 0,startY:int=0 ):void {
+			var _width:Number = $width;
+			var _height:Number = $height;
+			var innerWid:Number = _width - thickX;
+			var innerHei:Number = _height - thickY;
+			trace (innerWid,innerHei);
+			
+			
+			canvas.clear();
+			canvas.beginFill (n_color, n_alpha);
+			//左上
+			canvas.moveTo (startX, startY)
+			//右上
+			canvas.lineTo (_width + startX, startY);
+			
+			canvas.lineTo (_width + startX, _height + startY);
+			
+			canvas.lineTo (startX, _height + startY);
+			
+			canvas.lineTo(startX, thickY+startY);
+			
+			canvas.lineTo(startX+thickX, thickY+startY);
+			canvas.lineTo (startX + thickX, innerHei+startY);
+			
+			canvas.lineTo(startX + innerWid, innerHei+startY);
+			canvas.lineTo (startX + innerWid, thickY + startY);
+			
+			canvas.lineTo(startX, thickY+startY);
+			canvas.lineTo (startX, startY);
+			
+			//canvas.endFill ();
+			//canvas.lineTo (500, 0);
+			
+			//填充中间部分
+			canvas.beginFill (0xff0000,0);
+			canvas.drawRect(thickX+startX, thickY+startY, _width - 2 * thickX, _height - 2 * thickY);
+			canvas.endFill ();
+		}
 	}
 	
 }
