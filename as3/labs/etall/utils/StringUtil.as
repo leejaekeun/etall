@@ -328,7 +328,7 @@
 		/**
 		 *  替换数组中有序参数
 		 *  var url:String="http://etall.cn/username={0}&themes={1}"
-		 *  url=ParametersReplace(url,["etall",5]);
+		 *  url=replaceParam(url,["etall",5]);
 		 * // output:http://etall.cn/username=etall&themes=5
 		 * @param	URI
 		 * @param	arg
