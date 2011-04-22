@@ -1,23 +1,20 @@
 ﻿package  labs.etall.data.Uploader
 {
-	import flash.display.DisplayObject;
-	import flash.display.Sprite;
 	import flash.display.BitmapData;
-	import flash.events.ProgressEvent;
-	import flash.utils.ByteArray;
-	import flash.net.URLRequest;
-	import flash.net.URLLoader;
-	import flash.events.Event;
+	import flash.display.DisplayObject;
+	import flash.display.IBitmapDrawable;
 	import flash.events.ErrorEvent;
+	import flash.events.Event;
+	import flash.events.IOErrorEvent;
+	import flash.events.ProgressEvent;
+	import flash.events.SecurityErrorEvent;
+	import flash.net.URLLoader;
+	import flash.net.URLLoaderDataFormat;
+	import flash.net.URLRequest;
 	import flash.net.URLRequestHeader;
 	import flash.net.URLRequestMethod;
-	import flash.net.URLLoaderDataFormat;
-	import flash.events.IOErrorEvent;
-	import flash.events.SecurityErrorEvent;
 	import flash.net.URLVariables;
-	import flash.events.MouseEvent;
-	import fl.controls.Button;
-	import flash.geom.Rectangle;
+	import flash.utils.ByteArray;
 	
 	//目前最快的jpgEncoder  as3_jpeg_wrapper.swc
 	/**import cmodule.as3_jpeg_wrapper.CLibInit;*/
@@ -41,7 +38,7 @@
 
 		
 		public static function saveToServer(target:*=null,quality:int=80):void {
-			if(target is DisplayObject){
+			if(target is IBitmapDrawable){
 				bitmapData = new BitmapData(target.width, target.height, true, 0xFFFFFF);
 				bitmapData.draw(target);
 			}
