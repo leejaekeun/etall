@@ -5,6 +5,27 @@ package labs.etall.utils{
 	 * 2011-4-22 12:38
 	 * 获取省市区，数据来自taobao。
 	 * @author Etall(etall@etall.cn)
+	 * @usage
+	 *
+		var obj:Object = AddressData.getProvince();
+		trace("省");
+		var i;
+		for (i in obj)
+		{
+			trace(obj[i].data,obj[i].label);
+		}
+		trace("市");
+		obj = AddressData.getCityByProvinceId("310000");
+		for (i in obj)
+		{
+			trace(obj[i].data,obj[i].label);
+		}
+		trace("区");
+		obj = AddressData.getCityByProvinceId("310100");
+		for (i in obj)
+		{
+			trace(obj[i].data,obj[i].label);
+		}
 	 */
 	public class AddressData 
 	{
