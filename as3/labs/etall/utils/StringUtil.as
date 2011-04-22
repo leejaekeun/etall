@@ -289,6 +289,79 @@
 			return char.replace(/\r\n/gm, "\n");
 		}
 		
+		
+		//是否为手机号码;
+		public static function isMobilePhoneNumber(char:String):Boolean {
+			if (char == null){
+				return false;
+			}
+			char = trim(char);
+			var pattern:RegExp = /^0?1(3\d|5\d|8\d)\d{8}$/;
+			var result:Object = pattern.exec(char);
+			if (result == null){
+				return false;
+			}
+			return true;
+		}
+
+		//是否为身份证号码;
+		public static function isIdCardNumber(char:String):Boolean {
+			if (char == null){
+				return false;
+			}
+			char = trim(char);
+			var pattern:RegExp = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])(\d{4}|\d{3}[Xx])$/;
+			var result:Object = pattern.exec(char);
+			if (result == null){
+				return false;
+			}
+			return true;
+		}
+		
+		/*
+		 * 国内邮政编码
+		 */
+		public static function isZIP(zip:String):Boolean {
+			//原来邮编是可以以0打头的
+			return (/^(?:\d{6}|[1-9]\d{4})$/).test(zip);
+		}
+		
+		/*
+		 * 验证 是否国内固话
+		 */
+		public static function isTel(tel:String):Boolean {
+			var re:RegExp = /^(?:0{1,2}\d+[ \-]+)?0?\d{2,3}[ \-]+\d{7,9}(?:[^\d]+\d+)?$/;
+			return re.test(tel);
+		}
+		
+		//是否为QQ号码;
+		public static function isQQNumber(char:String):Boolean {
+			if (char == null){
+				return false;
+			}
+			char = trim(char);
+			var pattern:RegExp = /^[1-9]*[1-9][0-9]*$/;
+			var result:Object = pattern.exec(char);
+			if (result == null){
+				return false;
+			}
+			return true;
+		}
+		
+		//是否为IP地址;
+		public static function isIPAddress(char:String):Boolean {
+			if (char == null){
+				return false;
+			}
+			char = trim(char).toLowerCase();
+			var pattern:RegExp = /\d+\.\d+\.\d+\.\d+/;
+			var result:Object = pattern.exec(char);
+			if (result == null){
+				return false;
+			}
+			return true;
+		}
+		
 		//格式化数字; 
 		public static function fomartNumber(a:Number,w:Number=3,s:String=","):String {
 			var _a:String=String(a);
