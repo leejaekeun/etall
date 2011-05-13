@@ -387,8 +387,12 @@
 			while (t.length<n) {
 				t="0"+t;
 			}
+			if (t.length > n) {
+				t = t.substring(0, n);
+			}
 			return (t);
 		}
+		
 		//返回文件名 不包含点
 		public static function fileName(url:String):String {
 			return(url.split("\/")[url.split("\/").length - 1].split(".").shift());
